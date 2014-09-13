@@ -1,4 +1,4 @@
-dartspa
+DartSPA
 =======
 
-Single page application made with Dart
+Single page application made with Dart.
