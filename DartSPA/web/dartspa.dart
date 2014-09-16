@@ -1,16 +1,17 @@
+library dartspa;
+
 import 'dart:html';
 
+//Parts of this application
+part 'app.dart';
+
 void main() {
-  querySelector("#sample_text_id")
-      ..text = "Click me!"
-      ..onClick.listen(reverseText);
+  var appContainer = document.querySelector("#dartspa");
+  _app = new Application(appContainer);
+  app.CreateUI();
+  app.DefaultView();
 }
 
-void reverseText(MouseEvent event) {
-  var text = querySelector("#sample_text_id").text;
-  var buffer = new StringBuffer();
-  for (int i = text.length - 1; i >= 0; i--) {
-    buffer.write(text[i]);
-  }
-  querySelector("#sample_text_id").text = buffer.toString();
-}
+/// top level setter and getter which holds the running application
+Application _app;
+Application get app => _app;
