@@ -29,6 +29,7 @@ class Application{
     
     ButtonElement button = new ButtonElement();
     button.text = "Continue";
+    button.className = "rightsidedbutton";
     button.onClick.listen((e) => ListView());
     _contentElement.children.add(button);
   }
@@ -48,10 +49,12 @@ class Application{
           
           ButtonElement button = new ButtonElement();
               button.text = "Make one!";
+              button.className = "rightsidedbutton";
               button.onClick.listen((e) => EditView());
               _contentElement.children.add(button);
     }else{
       TableElement table = new TableElement();
+      table.className = "pure-table pure-table-bordered";
       var tHead = table.createTHead();
       TableRowElement headLine = tHead.insertRow(-1);
       headLine.insertCell(0).text = "Done";
@@ -62,7 +65,7 @@ class Application{
       var tBody = table.createTBody();
       for(int i = 0; i < ToDoList.length;  i++){
         TableRowElement newLine = tBody.insertRow(i);
-        newLine.insertCell(0).innerHtml = ToDoList[i].done ? "<input type='checkbox' disabled checked>" : "<input type='checkbox' disabled>" ;
+        newLine.insertCell(0).innerHtml = ToDoList[i].done ? "<input type='checkbox' class='done' disabled checked>" : "<input type='checkbox' class='done' disabled>" ;
         newLine.insertCell(1).text = ToDoList[i].title;
         newLine.insertCell(2).text = ToDoList[i].description;
         newLine.insertCell(3).append(new ButtonElement()
@@ -74,6 +77,7 @@ class Application{
       _contentElement.children.add(table);
       ButtonElement button = new ButtonElement();
                     button.text = "Add";
+                    button.className = "rightsidedbutton";
                     button.onClick.listen((e) => EditView());
                     _contentElement.children.add(button);
     }
@@ -88,6 +92,7 @@ class Application{
       _contentElement.children.add(labelDone);
       CheckboxInputElement done = new CheckboxInputElement();
       done.id = "done";
+      done.className = "done";
       done.checked = false;
       _contentElement.children.add(done);
       
@@ -95,7 +100,8 @@ class Application{
       LabelElement labelTitle = new LabelElement();
       labelTitle.text = "Title: ";
       _contentElement.children.add(labelTitle);
-      TextAreaElement title =new TextAreaElement();
+      _contentElement.children.add(new Element.html('<br />'));
+      InputElement title = new InputElement();
       title.id = "title";
       _contentElement.children.add(title);
      
@@ -103,6 +109,7 @@ class Application{
       LabelElement labelDescription = new LabelElement();
       labelDescription.text = "Description: ";
       _contentElement.children.add(labelDescription);
+      _contentElement.children.add(new Element.html('<br />'));
       TextAreaElement  description =new TextAreaElement();
       description.id = "description";
       _contentElement.children.add(description);
@@ -110,6 +117,7 @@ class Application{
       _contentElement.children.add(new Element.html('<br />'));
       ButtonElement button = new ButtonElement();
       button.text = "Save";
+      button.className = "rightsidedbutton";
       button.onClick.listen((e) => AddNewToDo());
       _contentElement.children.add(button);
     }else{
@@ -119,6 +127,7 @@ class Application{
             _contentElement.children.add(labelDone);
             CheckboxInputElement done = new CheckboxInputElement();
             done.id = "done";
+            done.className = "done";
             done.checked = todo.done;
             _contentElement.children.add(done);
             
@@ -126,15 +135,17 @@ class Application{
             LabelElement labelTitle = new LabelElement();
             labelTitle.text = "Title: ";
             _contentElement.children.add(labelTitle);
-            TextAreaElement title =new TextAreaElement();
+            _contentElement.children.add(new Element.html('<br />'));
+            InputElement title = new InputElement();
             title.id = "title";
-            title.text = todo.title;
+            title.value = todo.title;
             _contentElement.children.add(title);
            
             _contentElement.children.add(new Element.html('<br />'));
             LabelElement labelDescription = new LabelElement();
             labelDescription.text = "Description: ";
             _contentElement.children.add(labelDescription);
+            _contentElement.children.add(new Element.html('<br />'));
             TextAreaElement  description =new TextAreaElement();
             description.id = "description";
             description.text = todo.description;
@@ -143,6 +154,7 @@ class Application{
             _contentElement.children.add(new Element.html('<br />'));
             ButtonElement button = new ButtonElement();
             button.text = "Save";
+            button.className = "rightsidedbutton";
             button.onClick.listen((e) => EditExistingTodo(element));
             _contentElement.children.add(button);
     }
@@ -150,7 +162,7 @@ class Application{
   
   AddNewToDo(){
     CheckboxInputElement done = document.querySelector("#done");
-    TextAreaElement  title = document.querySelector("#title");
+    InputElement  title = document.querySelector("#title");
     TextAreaElement description = document.querySelector("#description");
     
     ToDoList.add(new ToDo(done.checked, title.value, description.value));
@@ -160,7 +172,7 @@ class Application{
   
   EditExistingTodo(int element) {
     CheckboxInputElement done = document.querySelector("#done");
-    TextAreaElement  title = document.querySelector("#title");
+    InputElement  title = document.querySelector("#title");
     TextAreaElement description = document.querySelector("#description");
     
     var todo = ToDoList[element];

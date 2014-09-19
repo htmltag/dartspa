@@ -1,29 +1,37 @@
-
-body {
-  background-color: #F8F8F8;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.2em;
-  margin: 15px;
+body{
+ background-color:#D6E9ED;
+ font: 400 1em 'Gudea', Verdana, Helvetica, sans-serif;
+ color:#1A1F2C;
 }
 
-h1, p {
-  color: #333;
+header{
+  color:#4697B6;
+  margin-bottom:0.1em;
+  font: 400 4em 'Rancho', Georgia, serif;
+  text-shadow: 0px 2px 3px #555;
 }
 
-#sample_container_id {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  border: 1px solid #ccc;
-  background-color: #fff;
+table{
+  width:98%;
 }
 
-#sample_text_id {
-  font-size: 24pt;
-  text-align: center;
-  margin-top: 140px;
-  -webkit-user-select: none;
-  user-select: none;
+.dartspa{
+  background-color:#FFF;
+  margin:3.5em auto 0 auto;
+  padding: 2em;
+  border: 1px solid #b7b7b7;
+  -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 1px 3px 0px rgba(50, 50, 50, 0.75);
 }
+
+.rightsidedbutton{
+  margin-top:1.5em;
+  float:right;
+}
+
+
+
+
